@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>element-controller-attachment</title>
+  </head>
+  <body>
+    <button class="slider-next-btn">Next</button>
+    <button class="slider-next-btn">Prev</button>
+
+    <!-- Class Declaration -->
+    <script>
+      class ElemColorChanger {
+        constructor(selector, options) {
+          this.selector = document.querySelector(selector);
+          // this.selector = document.querySelectorAll(selector)[1];
+
+          this.selector.buttonOptions = this;
+
+          this.selector.style.backgroundColor = options.bgColor;
+        }
+        changeColor(color) {
+          this.selector.style.backgroundColor = color;
+        }
+
+        getValue() {
+          return this.selector.innerText;
+        }
+      }
+    </script>
+
+    <!-- Usage -->
+    <script>
+      const buttonOptions = new ElemColorChanger(".slider-next-btn", {
+        bgColor: "red",
+      });
+
+      //   const button = document.querySelector(".slider-next-btn");
+      const options = document.querySelector(".slider-next-btn").buttonOptions;
+      //   const options =
+      //     document.querySelectorAll(".slider-next-btn")[1].buttonOptions;
+      console.log(options);
+
+      options.changeColor("green");
+      console.log(options.getValue());
+    </script>
+  </body>
+</html>
